@@ -1,2 +1,3 @@
-# apt.skct.edu.in
+#Aptiglide
+
 SKCT Aptitude test portal
