@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  --header-height: 3rem;
+  --font-semi: 600;
+  --hue-color: 224;
+  --first-color: hsl(var(--hue-color), 89%, 60%);
+  --second-color: hsl(var(--hue-color), 56%, 12%);
+  --body-font: 'Poppins', sans-serif;
+  --big-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: .938rem;
+  --smaller-font-size: .75rem;
+  --mb-2: 1rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+  --z-back: -10;
+  --z-fixed: 100;
+}
+
+
+@media screen and (min-width: 968px) {
+    :root {
+      --big-font-size: 3.5rem;
+      --h2-font-size: 2rem;
+      --normal-font-size: 1rem;
+      --smaller-font-size: .875rem;
+    }
+  }
+  
+  *, ::before, ::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin:0 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    color: var(--second-color);
+  }
+
+  a{
+    text-decoration: none;
+    color: var(--second-color);
+  }
+  header{
+    background-color: wheat;
+  }
+  .navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navbar-list{
+        display: flex;
+        justify-items: right;
+  }
+  .navbar-heading{
+    color: var(--first-color);
+  }
+  .navbar-list-items{
+    position: relative;
+    list-style-type: none;
+    margin-right: 50px;
+  }
+  .navbar-logo{
+    margin-left: 100px;
+  }
+  .navbar-toggle {
+    display: none;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .navbar-toggle {
+      display: block;
+    }
+  
+    .navbar-list {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      background-color: var(--first-color);
+      z-index: var(--z-fixed);
+      transition: all 0.5s ease;
+    }
+  
+  }
+.intro{
+    display: flex;
+    background-color:hotpink;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 40vh;
+}
+.intro-img-text{
+    margin-left: 20px;
+    margin-bottom: -30px;
+}
+@media screen and (max-width: 480px) {
+    .intro{
+    display: flex;
+    background-color:hotpink;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 30vh;
+    font-size: smaller;
+    }
+}
+
+  
+  
