@@ -466,7 +466,7 @@ li {
   top: 0.6rem;
 }
 
-.card {
+.card{
 
   scroll-snap-align: start;
   border-radius: 10px;
@@ -492,8 +492,8 @@ li {
 }
 
 .card:not(.cascading-right):hover {
-  transform: scale(1.04);
-  opacity: 0.8;
+  transform: scale(1.009);
+  opacity: 0.9;
 }
 
 .conteudo2 {
@@ -1112,4 +1112,78 @@ footer {
   text-align: left;
   -webkit-line-clamp: 3;
   font-size: .9vw;
+}
+
+.path-concept{
+  display: flex;
+  flex-direction: row;
+  font-size: 0.9vw;
+  justify-content: space-around;
+}
+.path-button{
+  background-color: var(--btncolor);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+
+/* Contest */
+
+.contest-status{
+  display: flex;
+justify-content: space-between;
+  width: 100%;
+  color: var(--btncolor);
+}
+.contest-status>span{
+  font-size: 0.9vw;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap:10px;
+  background-color: rgb(35, 154, 29);
+  padding-right:5px ;
+  padding-left: 5px;
+  border-top-left-radius:10px ;
+  border-bottom-left-radius:10px ;
+  margin-right: -20px;
+}
+.contest-details{
+  width:100%;
+  text-align: left;
+  padding-top: 20px;
+}
+.contest-details>h6{
+  padding-top: 10px;
+  font-size: 0.9vw;
+}
+.contest-prize{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.contest-register{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.contest-register>span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5rem;
+}
+.register-button{
+  width:100%;
+  text-align: center;
+  background-color: var(--btncolor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 10px;
 }

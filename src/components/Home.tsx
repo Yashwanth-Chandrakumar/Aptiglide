@@ -6,7 +6,7 @@ import Mainfooter from "./Mainfooter";
 import Collections from "./Collections";
 import Loader from "./Loader";
 import Guided from "./Guided";
-
+import Contests from "./Contests";
 
 function Home() {
   const [showLoader, setShowLoader] = useState(true);
@@ -44,10 +44,12 @@ function Home() {
       ) : (
         <div>
           <NavBar />
-          <Intro />
+            <Intro />
+            <Contests/>
           <IntroGrid />
-            <Collections />
-            <Guided/>
+            {/* <Collections /> */}
+            <Guided />
+            
           <Mainfooter />
         </div>
       )}

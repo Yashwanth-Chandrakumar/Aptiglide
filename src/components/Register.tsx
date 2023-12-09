@@ -69,12 +69,12 @@ function Register() {
                   <a href="#" id="sign">
                     {" "}
                     <Link
-                    to="/home"
-                    className="btn btn-primary btn-block "
-                    id="button1"
-                  >
-                    Sign up
-                  </Link>
+                      to="/home"
+                      className="btn btn-primary btn-block "
+                      id="button1"
+                    >
+                      Sign up
+                    </Link>
                   </a>
                 </button>
 
@@ -104,7 +104,7 @@ function Register() {
             height="700vh"
             width="700vw"
             className="rounded-100 shadow-100"
-            alt=""
+            alt="register"
           />
         </div>
       </div>
