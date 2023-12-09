@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import Intro from "./Intro";
 import IntroGrid from "./IntroGrid";
 import Mainfooter from "./Mainfooter";
-import Collections from "./Collections";
+// import Collections from "./Collections";
 import Loader from "./Loader";
 import Guided from "./Guided";
 import Contests from "./Contests";
