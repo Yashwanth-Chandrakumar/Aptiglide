@@ -100,7 +100,7 @@ function Register() {
         </div>
         <div className="col-lg-6 mb-5 mb-lg-0" id="limg">
           <img
-            src="images\5188350.jpg"
+            src="./images/5188350.jpg"
             height="700vh"
             width="700vw"
             className="rounded-100 shadow-100"

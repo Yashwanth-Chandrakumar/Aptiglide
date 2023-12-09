@@ -7,7 +7,7 @@ function Login() {
     <div className="container py-4">
       <div className="row g-0 align-items-center">
         <div className="col-lg-6 mb-5 mb-lg-0">
-          <div id="lgcard" className="card cascading-right" >
+          <div id="lgcard" className="card cascading-right">
             <div className="card-body p-5 shadow-5 text-center">
               <h2 className="fw-bold mb-5">Welcome to Aptiglide</h2>
               <form>
@@ -49,12 +49,12 @@ function Login() {
                   <a href="#" id="sign">
                     {" "}
                     <Link
-                    to="/home"
-                    className="btn btn-primary btn-block "
-                    id="button1"
-                  >
-                    Sign in
-                  </Link>
+                      to="/home"
+                      className="btn btn-primary btn-block "
+                      id="button1"
+                    >
+                      Sign in
+                    </Link>
                   </a>
                 </button>
                 <div className="text-center">
@@ -79,7 +79,7 @@ function Login() {
         </div>
         <div className="col-lg-6 mb-5 mb-lg-0" id="limg">
           <img
-            src="images\5484597.jpg"
+            src="./images/5484597.jpg"
             height="700vh"
             width="700vw"
             className="rounded-100 shadow-100"
