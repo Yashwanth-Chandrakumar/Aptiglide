@@ -1,8 +1,48 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-
+import { ChangeEvent, FormEvent, useState } from "react";
+import axios from "axios";
 function Login() {
+  let navigate = useNavigate();
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    if (localStorage.getItem("auth") === "true") {
+      navigate("/");
+    }
+  },[])
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:8080/", loginData);
+    const successMessage = "Login successful";
+    
+    if (response.data.startsWith(successMessage)) {
+      const userName = response.data.substring(successMessage.length).trim();
+      localStorage.setItem("name", userName);
+      localStorage.setItem("auth", true.toString());
+      console.log("Welcome, " + userName);
+      navigate("/");
+    } else {
+      console.error("Unexpected response format:", response.data);
+    }
+    } catch (error) {
+      console.error("Error during login:", error); // Handle login error
+    }
+  };
   return (
     <div className="container py-4">
       <div className="row g-0 align-items-center">
@@ -10,22 +50,28 @@ function Login() {
           <div id="lgcard" className="card cascading-right">
             <div className="card-body p-5 shadow-5 text-center">
               <h2 className="fw-bold mb-5">Welcome to Aptiglide</h2>
-              <form>
+              <form onSubmit={onSubmit}>
                 <div className="form-outline mb-4">
                   <input
-                    type="email"
-                    id="form3Example3"
-                    className="form-control"
-                  />
+    type="email"
+    value={loginData.email}
+    name="email" // Add name attribute
+    id="form3Example3"
+    className="form-control"
+    onChange={handleChange}
+  />
                   <label className="form-label">Email address</label>
                 </div>
 
                 <div className="form-outline mb-4">
-                  <input
-                    type="password"
-                    id="form3Example4"
-                    className="form-control"
-                  />
+                <input
+  type="password"
+  id="form3Example4"
+  value={loginData.password}
+  name="password" // Add name attribute
+  className="form-control"
+  onChange={handleChange}
+/>
                   <label className="form-label">Password</label>
                 </div>
 
@@ -33,42 +79,34 @@ function Login() {
                   <input
                     className="form-check-input me-2"
                     type="checkbox"
-                    value=""
                     id="form2Example33"
-                    checked
+                    defaultChecked // Use defaultChecked instead of checked
                   />
                   <label className="form-check-label">
                     Subscribe to our newsletter
                   </label>
                 </div>
 
+                {/* Removed unnecessary anchor tag */}
                 <button
                   type="submit"
                   className="btn btn-primary btn-block mb-4"
                 >
-                  <a href="#" id="sign">
-                    {" "}
-                    <Link
-                      to="/home"
-                      className="btn btn-primary btn-block "
-                      id="button1"
-                    >
-                      Sign in
-                    </Link>
-                  </a>
+                  Sign In
                 </button>
+
                 <div className="text-center">
                   <p>or sign in with:</p>
                   <button type="button" className="btn btn-link" id="gicon">
                     <FontAwesomeIcon icon={faGoogle} size="2x" />
                   </button>
                 </div>
+
                 <div className="text_center">
                   <p>New to Aptiglide</p>
                   <Link
                     to="/register"
                     className="btn btn-primary btn-block mb-4"
-                    id="button1"
                   >
                     Register
                   </Link>
@@ -90,4 +128,5 @@ function Login() {
     </div>
   );
 }
+
 export default Login;
