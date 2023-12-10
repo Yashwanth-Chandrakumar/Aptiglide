@@ -7,10 +7,10 @@ function Intro() {
   useEffect(() => {
     loadUser();
   }, []);
-
   const loadUser = async () => {
     const result = await axios.get("http://localhost:8080/users");
     setUsers(result.data);
+    console.log(users);
   };
 
   return (
@@ -19,13 +19,13 @@ function Intro() {
         <div className="home__data">
           <div>
             <h1 className="home__title">
-              Hi,<br />
-              
-                <span className="home__title-color">
-                  {localStorage.getItem("name")} 👋
-                </span>
-              
-              <br />How are you?
+              Hi,
+              <br />
+              <span className="home__title-color">
+                {localStorage.getItem("name")} 👋
+              </span>
+              <br />
+              How are you?
             </h1>
           </div>
           <img
