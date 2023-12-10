@@ -13,7 +13,7 @@ function Login() {
 
   useEffect(() => {
     if (localStorage.getItem("auth") === "true") {
-      navigate("/");
+      navigate("/home");
     }
   },[])
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +35,7 @@ function Login() {
       localStorage.setItem("name", userName);
       localStorage.setItem("auth", true.toString());
       console.log("Welcome, " + userName);
-      navigate("/");
+      navigate("/home");
     } else {
       console.error("Unexpected response format:", response.data);
     }
