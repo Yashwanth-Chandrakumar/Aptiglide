@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { ChangeEvent, FormEvent } from "react";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import axios from "axios";
 function Register() {
   let navigate = useNavigate();
@@ -13,7 +15,10 @@ function Register() {
     email: "",
     password: "",
   });
-
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const { fname, lname, email, password } = user;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,30 +28,13 @@ function Register() {
     });
   };
 
-  // const InvalidCredentialsMessage: React.FC = () => {
-  //   const [displayMessage, setDisplayMessage] = useState(true);
-  
-  //   useEffect(() => {
-  //     setDisplayMessage(true);
-  
-  //     const timeoutId = setTimeout(() => {
-  //       setDisplayMessage(false);
-  //     }, 5000);
-  
-  //     return () => clearTimeout(timeoutId);
-  //   }, []);
-
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://localhost:8080/user",
-        user
-      );
+      await axios.post("http://localhost:8080/user", user);
       console.log("Data successfully sent to the server!");
       navigate("/");
     } catch (error) {
-
       console.error("Error sending data to the server:", error);
     }
   };
@@ -57,7 +45,9 @@ function Register() {
         <div className="col-lg-6 mb-5 mb-lg-0">
           <div className="card cascading-right">
             <div className="card-body p-5 shadow-5 text-center">
-              <h2 className="fw-bold mb-5" id="welcome">Welcome :)</h2>
+              <h2 className="fw-bold mb-5" id="welcome">
+                Welcome :)
+              </h2>
               <form onSubmit={onSubmit}>
                 <div className="row">
                   <div className="col-md-6 mb-4">
@@ -98,13 +88,24 @@ function Register() {
 
                 <div className="form-outline mb-4">
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="password" // Use a unique ID for each input field
                     value={password}
                     onChange={handleChange}
                     className="form-control"
                   />
                   <label className="form-label">Password</label>
+                  <button
+                    type="button"
+                    className="btn btn-link password-toggle"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {showPassword ? (
+                      <VisibilityIcon className="eye" fontSize="small" />
+                    ) : (
+                      <VisibilityOffIcon className="eye" fontSize="small" />
+                    )}
+                  </button>
                 </div>
                 <div className="form-check d-flex justify-content-center mb-4">
                   <input

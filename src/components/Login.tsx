@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { ChangeEvent, FormEvent, useState } from "react";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import axios from "axios";
 function Login() {
   let navigate = useNavigate();
@@ -10,6 +12,11 @@ function Login() {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false); // New state for password visibility
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   useEffect(() => {
     if (localStorage.getItem("auth") === "true") {
@@ -27,10 +34,7 @@ function Login() {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:8080/",
-        loginData
-      );
+      const response = await axios.post("http://localhost:8080/", loginData);
       const successMessage = "Login successful";
 
       if (response.data.startsWith(successMessage)) {
@@ -56,7 +60,12 @@ function Login() {
           <div id="lgcard" className="card cascading-right">
             <div className="card-body p-5 shadow-5 text-center">
               <h2 className="fw-bold mb-5">Welcome to Aptiglide</h2>
-              <p className="invalid-credentials" style={{ display: valid ? "none" : "block" }}>Enter valid credentials</p>
+              <p
+                className="invalid-credentials"
+                style={{ display: valid ? "none" : "block" }}
+              >
+                Enter valid credentials
+              </p>
               <form onSubmit={onSubmit}>
                 <div className="form-outline mb-4">
                   <input
@@ -68,19 +77,29 @@ function Login() {
                     onChange={handleChange}
                   />
                   <label className="form-label">Email address</label>
-                  
                 </div>
 
                 <div className="form-outline mb-4">
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="form3Example4"
                     value={loginData.password}
-                    name="password" // Add name attribute
+                    name="password"
                     className="form-control"
                     onChange={handleChange}
                   />
                   <label className="form-label">Password</label>
+                  <button
+                    type="button"
+                    className="btn btn-link password-toggle"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {showPassword ? (
+                      <VisibilityIcon className="eye" fontSize="small" />
+                    ) : (
+                      <VisibilityOffIcon className="eye" fontSize="small" />
+                    )}
+                  </button>
                 </div>
 
                 <div className="form-check d-flex justify-content-center mb-4">

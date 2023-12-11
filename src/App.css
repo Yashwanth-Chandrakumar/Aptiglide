@@ -196,10 +196,16 @@ li {
   margin-bottom: 3px;
   color: rgb(147, 71, 223);
 }
-.invalid-credentials{
+
+.eye {
+  margin-top: -.25rem;
+}
+
+.invalid-credentials {
   color: red;
   display: none;
 }
+
 @media only screen and (max-width:1000px) {
   #limg {
     display: none;
@@ -230,14 +236,17 @@ li {
 }
 
 /* Intro */
-.intro-home{
+.intro-home {
   width: 100%;
+  overflow-x: hidden;
 }
+
 #home {
   padding-top: 5rem;
   padding-bottom: 2rem;
   height: 100vh;
-  width:100%;
+  margin: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -256,16 +265,21 @@ li {
   font-weight: bold;
   line-height: 1.3;
 }
-.introimg{
+
+.introimg {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .intro-img {
-  width: 70%; /* You can adjust this as needed */
-  height: auto; /* Maintain aspect ratio */
+  width: 70%;
+  /* You can adjust this as needed */
+  height: auto;
+  /* Maintain aspect ratio */
   border-radius: 4%;
 }
+
 /* #home{
   width: 100%;
   padding-top: 5rem;
@@ -298,7 +312,7 @@ align-items: center;
   /* top: 75%; */
   /* display: inline-block; */
   margin-top: 3rem;
-   background-color: var(--btncolor);
+  background-color: var(--btncolor);
   color: var(--textcolor);
   padding: .75rem 2.5rem;
   font-weight: var(--font-semi);
@@ -316,35 +330,41 @@ align-items: center;
 } */
 
 @media only screen and (max-width:767px) {
-  .intro-home{
+  .intro-home {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  #home{
+
+  #home {
     width: 100%;
     margin-left: 0;
   }
-  .home__data{
-    width:100%;
+
+  .home__data {
+    width: 100%;
   }
+
   .home__title {
     font-size: var(--big-font-size);
     margin-bottom: var(--mb-5);
     font-weight: bolder;
-   margin-bottom: 1rem;
+    margin-bottom: 1rem;
     margin-top: 0px;
     line-height: 1.4;
   }
-.introimg{
-  display: none;
-}
-#bttn{
-  margin-top: 0.5rem;
-  background-color: red;
-  padding: .55rem 1.5rem;
-}
+
+  .introimg {
+    display: none;
+  }
+
+  #bttn {
+    margin-top: 0.5rem;
+    background-color: var(--btncolor);
+    padding: .55rem 1.5rem;
+  }
+
   /* .button {
     position: absolute;
     display: inline-block;
@@ -358,9 +378,9 @@ align-items: center;
     top: 80%;
     left: 5%;
   } */
-/* } */
+  /* } */
 
-/* @media only screen and (min-width:2560px) {
+  /* @media only screen and (min-width:2560px) {
   /* .button {
     position: absolute;
     display: inline-block;
@@ -393,7 +413,9 @@ align-items: center;
 
 .home__title-color {
   color: var(--btncolor);
-} */
+}
+
+*/
 
 /* carousel */
 .grid {
@@ -510,7 +532,7 @@ align-items: center;
   top: 0.6rem;
 }
 
-.card{
+.card {
 
   scroll-snap-align: start;
   border-radius: 10px;
@@ -560,26 +582,22 @@ align-items: center;
 }
 
 /* footer */
-footer {
+.footer {
+  padding: 2rem;
+  display: flex;
   margin-top: 3%;
-  background-color: var(--txtcolor);
-  height: 40vh;
-  position: relative;
+  background-color: black;
   box-shadow: var(--bxshadow);
+  height: auto;
+  position: relative;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .footer-text {
   color: var(--btncolor);
-  position: absolute;
-  top: 40%;
-  left: 4%;
 }
 
-.footer-ref {
-  position: absolute;
-  top: 25%;
-  left: 30%;
-}
 
 .footer-ref li {
   margin-top: 10px;
@@ -587,204 +605,33 @@ footer {
 }
 
 .footer-ref span {
-  font-size: 23px;
-  color: antiquewhite;
-}
-
-.footer-ref2 {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-
-}
-
-.footer-ref2 li {
-  margin-top: 10px;
-  color: var(--btncolor);
-
-}
-
-.footer-ref2 span {
-  font-size: 23px;
+  font-size: 1.5rem;
   color: antiquewhite;
 }
 
 .copyright {
-  position: absolute;
-  top: 44%;
+
   color: var(--btncolor);
 
-  left: 70%;
 }
 
-@media only screen and (max-width:480px) {
-  footer {
-    margin-top: 3%;
-    background-color: var(--txtcolor);
-    height: 100vh;
-    position: relative;
+@media screen and (max-width:768px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .footer-text {
-    color: white;
-    position: absolute;
-    top: 5%;
-    left: 34%;
+    align-self: center;
   }
 
   .footer-ref {
-    position: absolute;
-    top: 20%;
-    left: 5%;
-  }
-
-  .footer-ref li {
-    color: var(--btncolor);
-
-    margin-top: 10px;
-  }
-
-  .footer-ref span {
-    font-size: 23px;
-    color: antiquewhite;
-  }
-
-  .footer-ref2 {
-    position: absolute;
-    top: 55%;
-    left: 5%;
-  }
-
-  .footer-ref2 li {
-    color: var(--btncolor);
-
-    margin-top: 10px;
-  }
-
-  .footer-ref2 span {
-    font-size: 23px;
-    color: antiquewhite;
+    margin-top: 2rem;
   }
 
   .copyright {
-    position: absolute;
-    top: 87%;
-    left: 27%;
-    color: var(--btncolor);
-
-  }
-}
-
-@media only screen and (max-width:1000px) and (min-width:481px) {
-  footer {
-    margin-top: 3%;
-    background-color: var(--txtcolor);
-    height: 43vh;
-    position: relative;
-  }
-
-  .footer-text {
-    color: white;
-    position: absolute;
-    top: 5%;
-    left: 36%;
-  }
-
-  .footer-ref {
-    position: absolute;
-    top: 25%;
-    left: 10%;
-  }
-
-  .footer-ref li {
-    margin-top: 10px;
-  }
-
-  .footer-ref span {
-    font-size: 23px;
-    color: antiquewhite;
-  }
-
-  .footer-ref2 {
-    position: absolute;
-    top: 25%;
-    left: 55%;
-  }
-
-  .footer-ref2 li {
-    margin-top: 10px;
-  }
-
-  .footer-ref2 span {
-    font-size: 23px;
-    color: antiquewhite;
-  }
-
-  .copyright {
-    position: absolute;
-    top: 85%;
-    left: 36%;
-    color: var(--btncolor);
-
-  }
-}
-
-@media only screen and (min-width:1199px) and (min-height:1999px) {
-
-  footer {
-    margin-top: 3%;
-    background-color: var(--txtcolor);
-    height: 20vh;
-    position: relative;
-    box-shadow: var(--bxshadow);
-  }
-
-  .footer-text {
-    color: var(--btncolor);
-    position: absolute;
-    top: 40%;
-    left: 4%;
-  }
-
-  .footer-ref {
-    position: absolute;
-    top: 25%;
-    left: 30%;
-  }
-
-  .footer-ref li {
-    margin-top: 10px;
-    color: var(--btncolor);
-  }
-
-  .footer-ref span {
-    font-size: 23px;
-    color: antiquewhite;
-  }
-
-  .footer-ref2 {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-
-  }
-
-  .footer-ref2 li {
-    margin-top: 10px;
-    color: var(--btncolor);
-
-  }
-
-  .footer-ref2 span {
-    font-size: 23px;
-    color: antiquewhite;
-  }
-
-  .copyright {
-    position: absolute;
-    top: 44%;
-    color: var(--btncolor);
-    left: 74%;
+    margin-top: 2rem;
+    align-self: center;
   }
 }
 
@@ -1158,13 +1005,14 @@ footer {
   font-size: .9rem;
 }
 
-.path-concept{
+.path-concept {
   display: flex;
   flex-direction: row;
   font-size: 0.9rem;
   justify-content: space-around;
 }
-.path-button{
+
+.path-button {
   background-color: var(--btncolor);
   padding: 10px;
   border: none;
@@ -1174,55 +1022,62 @@ footer {
 
 /* Contest */
 
-.contest-status{
+.contest-status {
   display: flex;
-justify-content: space-between;
+  justify-content: space-between;
   width: 100%;
   color: var(--btncolor);
 }
-.contest-status>span{
+
+.contest-status>span {
   font-size: 0.8rem;
   color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap:10px;
+  gap: 10px;
   background-color: rgb(35, 154, 29);
-  padding-right:5px ;
+  padding-right: 5px;
   padding-left: 5px;
-  border-top-left-radius:10px ;
-  border-bottom-left-radius:10px ;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   margin-right: -20px;
 }
-.contest-details{
-  width:100%;
+
+.contest-details {
+  width: 100%;
   text-align: left;
   padding-top: 20px;
 }
-.contest-details>h6{
+
+.contest-details>h6 {
   padding-top: 10px;
   font-size: 0.9rem;
 }
-.contest-prize{
+
+.contest-prize {
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.contest-register{
+
+.contest-register {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.contest-register>span{
+
+.contest-register>span {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5rem;
 }
-.register-button{
-  width:100%;
+
+.register-button {
+  width: 100%;
   text-align: center;
   background-color: var(--btncolor);
   display: flex;
