@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 function Intro() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     loadUser();
   }, []);
+
   const loadUser = async () => {
     const result = await axios.get("http://localhost:8080/users");
     setUsers(result.data);
@@ -14,29 +15,29 @@ function Intro() {
   };
 
   return (
-    <div>
+    <div className="intro-home">
       <section className="home bd-grid" id="home">
         <div className="home__data">
-          <div>
-            <h1 className="home__title">
-              Hi,
-              <br />
-              <span className="home__title-color">
-                {localStorage.getItem("name")} 👋
-              </span>
-              <br />
-              How are you?
-            </h1>
-          </div>
+          <h1 className="home__title">
+            Hi,
+            <br />
+            <span className="home__title-color">
+              {localStorage.getItem("name")} 👋
+            </span>
+            <br />
+            How are you?
+          </h1>
+          <span className="button" id="bttn">
+            Play a Quiz !
+          </span>
+        </div>
+        <div className="introimg">
           <img
             src="./images/6203326.jpg"
             alt="intro-image"
-            width="40%"
-            height="30%"
             className="intro-img"
           />
         </div>
-        <span className="button">Play a Quiz !</span>
       </section>
     </div>
   );

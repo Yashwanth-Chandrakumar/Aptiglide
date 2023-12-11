@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import Intro from "./Intro";
 import IntroGrid from "./IntroGrid";
@@ -10,7 +11,7 @@ import Contests from "./Contests";
 
 function Home() {
   const [showLoader, setShowLoader] = useState(true);
-
+  let navigate = useNavigate();
   useEffect(() => {
     const loaderTimeout = setTimeout(() => {
       setShowLoader(false);
@@ -35,6 +36,17 @@ function Home() {
       window.removeEventListener("online", handleOnlineStatus);
       window.onload = null; 
     };
+  }, []);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem("auth") === "false") {
+        navigate("/");
+      }
+    }
+    catch (error) {
+      navigate("/");
+    }
   }, []);
 
   return (

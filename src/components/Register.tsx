@@ -23,13 +23,30 @@ function Register() {
     });
   };
 
+  // const InvalidCredentialsMessage: React.FC = () => {
+  //   const [displayMessage, setDisplayMessage] = useState(true);
+  
+  //   useEffect(() => {
+  //     setDisplayMessage(true);
+  
+  //     const timeoutId = setTimeout(() => {
+  //       setDisplayMessage(false);
+  //     }, 5000);
+  
+  //     return () => clearTimeout(timeoutId);
+  //   }, []);
+
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/user", user);
+      await axios.post(
+        "http://localhost:8080/user",
+        user
+      );
       console.log("Data successfully sent to the server!");
       navigate("/");
     } catch (error) {
+
       console.error("Error sending data to the server:", error);
     }
   };
@@ -40,7 +57,7 @@ function Register() {
         <div className="col-lg-6 mb-5 mb-lg-0">
           <div className="card cascading-right">
             <div className="card-body p-5 shadow-5 text-center">
-              <h2 className="fw-bold mb-5">Welcome :)</h2>
+              <h2 className="fw-bold mb-5" id="welcome">Welcome :)</h2>
               <form onSubmit={onSubmit}>
                 <div className="row">
                   <div className="col-md-6 mb-4">
@@ -117,7 +134,7 @@ function Register() {
                 <div className="text_center">
                   <p>Existing user</p>
                   <Link
-                    to="/login"
+                    to="/"
                     className="btn btn-primary btn-block mb-4"
                     id="button1"
                   >

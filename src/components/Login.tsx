@@ -15,7 +15,7 @@ function Login() {
     if (localStorage.getItem("auth") === "true") {
       navigate("/home");
     }
-  },[])
+  }, []);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLoginData({
       ...loginData,
@@ -23,24 +23,30 @@ function Login() {
     });
   };
 
+  const [valid, setValid] = useState(true);
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post("http://localhost:8080/", loginData);
-    const successMessage = "Login successful";
-    
-    if (response.data.startsWith(successMessage)) {
-      const userName = response.data.substring(successMessage.length).trim();
-      localStorage.setItem("name", userName);
-      localStorage.setItem("auth", true.toString());
-      console.log("Welcome, " + userName);
-      navigate("/home");
-    } else {
-      console.error("Unexpected response format:", response.data);
-    }
+      const response = await axios.post(
+        "http://localhost:8080/",
+        loginData
+      );
+      const successMessage = "Login successful";
+
+      if (response.data.startsWith(successMessage)) {
+        const userName = response.data.substring(successMessage.length).trim();
+        localStorage.setItem("name", userName);
+        localStorage.setItem("auth", true.toString());
+        console.log("Welcome, " + userName);
+        setValid(true);
+        navigate("/home");
+      } else {
+        console.error("Unexpected response format:", response.data);
+        setValid(false);
+      }
     } catch (error) {
       console.error("Error during login:", error); // Handle login error
+      setValid(false);
     }
   };
   return (
@@ -50,28 +56,30 @@ function Login() {
           <div id="lgcard" className="card cascading-right">
             <div className="card-body p-5 shadow-5 text-center">
               <h2 className="fw-bold mb-5">Welcome to Aptiglide</h2>
+              <p className="invalid-credentials" style={{ display: valid ? "none" : "block" }}>Enter valid credentials</p>
               <form onSubmit={onSubmit}>
                 <div className="form-outline mb-4">
                   <input
-    type="email"
-    value={loginData.email}
-    name="email" // Add name attribute
-    id="form3Example3"
-    className="form-control"
-    onChange={handleChange}
-  />
+                    type="email"
+                    value={loginData.email}
+                    name="email" // Add name attribute
+                    id="form3Example3"
+                    className="form-control"
+                    onChange={handleChange}
+                  />
                   <label className="form-label">Email address</label>
+                  
                 </div>
 
                 <div className="form-outline mb-4">
-                <input
-  type="password"
-  id="form3Example4"
-  value={loginData.password}
-  name="password" // Add name attribute
-  className="form-control"
-  onChange={handleChange}
-/>
+                  <input
+                    type="password"
+                    id="form3Example4"
+                    value={loginData.password}
+                    name="password" // Add name attribute
+                    className="form-control"
+                    onChange={handleChange}
+                  />
                   <label className="form-label">Password</label>
                 </div>
 

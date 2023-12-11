@@ -1,5 +1,14 @@
 import DarkModeToggle from "./DarkMode";
+import { MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 function NavBar() {
+  let navigate = useNavigate();
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    localStorage.setItem("auth", "false");
+    console.log("auth removed");
+    navigate("/");
+    e.preventDefault();
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg">
@@ -61,8 +70,10 @@ function NavBar() {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Logout
+                    <a className="dropdown-item" href="#" onClick={handleClick}>
+                      
+                        Logout
+                        
                     </a>
                   </li>
                 </ul>
