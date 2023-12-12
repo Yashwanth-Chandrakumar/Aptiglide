@@ -10,13 +10,13 @@ import Guided from "./Guided";
 import Contests from "./Contests";
 
 function Home() {
+  localStorage.setItem("livetab", "home");
+
+  
   const [showLoader, setShowLoader] = useState(true);
   let navigate = useNavigate();
-  useEffect(() => {
-    const loaderTimeout = setTimeout(() => {
-      setShowLoader(false);
-    }, 5000);
 
+  useEffect(() => {
     const handleOnlineStatus = () => {
       if (!navigator.onLine) {
         setShowLoader(true);
@@ -26,12 +26,15 @@ function Home() {
     window.addEventListener("offline", handleOnlineStatus);
     window.addEventListener("online", handleOnlineStatus);
 
-    window.onload = () => {
+    if (document.readyState === "complete") {
       setShowLoader(false);
-    };
+    } else {
+      window.onload = () => {
+        setShowLoader(false);
+      };
+    }
 
     return () => {
-      clearTimeout(loaderTimeout);
       window.removeEventListener("offline", handleOnlineStatus);
       window.removeEventListener("online", handleOnlineStatus);
       window.onload = null; 
@@ -55,14 +58,15 @@ function Home() {
         <Loader />
       ) : (
         <div>
-          <NavBar />
+          {/* <Loader/> */}
+            <NavBar />
             <Intro />
             <Contests/>
           <IntroGrid />
             {/* <Collections /> */}
             <Guided />
             
-          <Mainfooter />
+        <Mainfooter />
         </div>
       )}
     </div>

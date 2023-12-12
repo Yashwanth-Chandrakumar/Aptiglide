@@ -5,10 +5,15 @@ import { useState } from "react";
 import { ChangeEvent, FormEvent } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useEffect } from "react";
 import axios from "axios";
 function Register() {
   let navigate = useNavigate();
-
+  useEffect(() => {
+    if (localStorage.getItem("auth") === "true") {
+      navigate("/home");
+    }
+  }, []);
   const [user, setUser] = useState({
     fname: "",
     lname: "",

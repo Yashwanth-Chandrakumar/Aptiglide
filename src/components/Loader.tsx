@@ -7,8 +7,12 @@ export default function Loader(){
   <div className="loader__bar"></div>
   <div className="loader__bar"></div>
   <div className="loader__bar"></div>
-  <div className="loader__ball"></div>
+                <div className="loader__ball"></div>
 </div>
+                
+                <div className="thought">
+                    <p>Don't waste your time scrolling, just Aptiglide it.</p>
+        </div>
 </div>
     )
 }

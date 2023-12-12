@@ -1,8 +1,10 @@
 import DarkModeToggle from "./DarkMode";
 import { MouseEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function NavBar() {
   let navigate = useNavigate();
+  let tab = localStorage.getItem("livetab");
+
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     localStorage.setItem("auth", "false");
     console.log("auth removed");
@@ -13,11 +15,9 @@ function NavBar() {
     <>
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <span className="navbar-brand" >
-            Aptiglide
-          </span>
+          <span className="navbar-brand">Aptiglide</span>
           <span className="dm">
-          <DarkModeToggle/>
+            <DarkModeToggle />
           </span>
           <button
             className="navbar-toggler"
@@ -30,23 +30,25 @@ function NavBar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <div
+            className="collapse navbar-collapse justify-content-end"
+            id="navbarNavDropdown"
+          >
             <ul className="navbar-nav" id="navlinks">
-            
+              <Link to="/home">
               <li className="nav-item">
-                <span className="nav-link live" aria-current="page" >
+                <span className={`nav-link ${tab === "home" ? "live" : ""}`} aria-current="page">
                   Home
                 </span>
-              </li>
+                </li>
+                </Link>
+              <Link to="/quiz">
               <li className="nav-item">
-                <span className="nav-link align-text-bottom">
-                  Quizes
-                </span>
+                <span className={`nav-link align-text-bottom ${tab=="quiz"?"live":""}`}>Quizes</span>
               </li>
+              </Link>
               <li className="nav-item">
-                <span className="nav-link">
-                  Reference
-                </span>
+                <span className="nav-link">Reference</span>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -71,9 +73,7 @@ function NavBar() {
                   </li>
                   <li>
                     <a className="dropdown-item" href="#" onClick={handleClick}>
-                      
-                        Logout
-                        
+                      Logout
                     </a>
                   </li>
                 </ul>
